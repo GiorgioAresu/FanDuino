@@ -1,7 +1,7 @@
 #include <LiquidCrystal.h>
 #include <OneWire.h>            // http://wp.josh.com/2014/06/23/no-external-pull-up-needed-for-ds18b20-temp-sensor/#more-1892
 #include <DallasTemperature.h>
-#include "FanReader.h"
+#include <FanController.h>
 
 #define DEBUG 1
 
@@ -16,7 +16,7 @@ const int fanThresholdMillis = 1000;
 LiquidCrystal lcd(12, 11, A0, A1, A2, A3);
 OneWire tempSensor(tempPin);
 DallasTemperature sensors(&tempSensor);   // Pass our oneWire reference to Dallas Temperature.
-FanReader fans[] = {FanReader(2, fanThresholdMillis), FanReader(3, fanThresholdMillis)};
+FanController fans[] = {FanController(2, fanThresholdMillis), FanController(3, fanThresholdMillis)};
 
 // For RPM readings
 byte fanInterruptPins[fanCount];
